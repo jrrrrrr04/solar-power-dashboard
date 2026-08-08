@@ -70,29 +70,31 @@ p, .stCaption, [data-testid="stCaptionContainer"] {
     transform: translateY(-2px);
 }
 
-/* Tabs */
-/* 1. Force every outer Streamlit container to physically reach the right edge */
-.stTabs, 
-.stTabs > div, 
-.stTabs [data-baseweb="tab-list"] {
+/* Tabs - Force Full Container Width */
+[data-testid="stTabs"] {
     width: 100% !important;
 }
 
+[data-testid="stTabs"] > div:first-child {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
 .stTabs [data-baseweb="tab-list"] {
-    gap: 0px;
+    gap: 0px !important;
     border-bottom: 1px solid var(--border) !important;
+    width: 100% !important;
     display: flex !important;
 }
 
-/* 2. Now the tabs can finally stretch into that full width */
 .stTabs [data-baseweb="tab"] {
-    flex: 1 1 0% !important; /* The 0% forces them to completely ignore text length and be exactly equal */
+    flex: 1 1 0% !important;
     width: 100% !important;
-    justify-content: center;
-    height: 48px;
-    color: var(--muted);
-    font-weight: 600;
-    font-size: 0.90rem;
+    justify-content: center !important;
+    height: 48px !important;
+    color: var(--muted) !important;
+    font-weight: 600 !important;
+    font-size: 0.90rem !important;
     white-space: normal !important;
 }
 
