@@ -70,51 +70,31 @@ p, .stCaption, [data-testid="stCaptionContainer"] {
     transform: translateY(-2px);
 }
 
-/* ── TABS ───────────────────────────────────────────── */
-
-.stTabs {
-    width: 100% !important;
-}
-
-/* The row containing all tabs */
+/* Tabs */
 .stTabs [data-baseweb="tab-list"] {
-    display: flex !important;
-    width: 100% !important;
-    gap: 0 !important;
-    border-bottom: 1px solid var(--border) !important;
+    gap: 0px;
+    border-bottom: 1px solid var(--border);
+    width: 100%;
 }
 
-/* EACH actual tab button */
-.stTabs [data-baseweb="tab-list"] > button {
-    flex: 1 1 0 !important;
-    width: 0 !important;
-    min-width: 0 !important;
-    max-width: none !important;
-
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-
-    height: 48px !important;
-    padding: 0 !important;
-    margin: 0 !important;
-
-    color: var(--muted) !important;
-    font-weight: 600 !important;
-    font-size: 0.90rem !important;
-
-    white-space: nowrap !important;
+.stTabs [data-baseweb="tab"] {
+    flex: 1;
+    justify-content: center;
+    height: 48px;
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 0.95rem;
 }
 
-/* Remove Streamlit's default highlight */
-.stTabs [data-baseweb="tab-highlight"] {
-    display: none !important;
-}
-
-/* Active tab */
-.stTabs [data-baseweb="tab-list"] > button[aria-selected="true"] {
+.stTabs [aria-selected="true"] {
     color: var(--accent) !important;
     border-bottom: 3px solid var(--accent) !important;
+}
+
+[data-testid="stSlider"] { padding-top: 0.2rem; }
+
+[data-testid="stTabs"] > div:first-child button:not([role="tab"]) {
+    display: none !important;
 }
 
 /* Divider */
@@ -133,7 +113,6 @@ hr {
 .subtitle {
     font-family: palatino, serif !important;
 }
-
 
 /* ── RESPONSIVE STREAMLIT ADJUSTMENTS ────────────────── */
 @media (max-width: 768px) {
