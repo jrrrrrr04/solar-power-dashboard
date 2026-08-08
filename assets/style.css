@@ -70,24 +70,27 @@ p, .stCaption, [data-testid="stCaptionContainer"] {
     transform: translateY(-2px);
 }
 
-/* Tabs - Global Override */
-.stTabs,
-.stTabs > div {
-    width: 100% !important;
-}
-
-.stTabs [role="tablist"], 
-.stTabs [data-baseweb="tab-list"] {
+/* Tabs */
+[data-testid="stTabs"] [role="tablist"],
+[data-testid="stTabs"] [data-baseweb="tab-list"] {
     display: flex !important;
     width: 100% !important;
     gap: 0px !important;
     border-bottom: 1px solid var(--border) !important;
 }
 
-.stTabs button[role="tab"], 
-.stTabs [data-baseweb="tab"] {
-    flex-grow: 1 !important;
-    flex-basis: 0 !important;
+/* 1. Force Streamlit's invisible tooltip wrapper divs to stretch */
+[data-testid="stTabs"] [role="tablist"] > *,
+[data-testid="stTabs"] [data-baseweb="tab-list"] > * {
+    flex: 1 1 0% !important;
+    display: flex !important;
+}
+
+/* 2. Style the actual buttons inside those wrappers */
+[data-testid="stTabs"] button[role="tab"],
+[data-testid="stTabs"] button[data-baseweb="tab"] {
+    width: 100% !important;
+    flex: 1 1 0% !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
@@ -98,10 +101,16 @@ p, .stCaption, [data-testid="stCaptionContainer"] {
     background: transparent !important;
 }
 
-.stTabs button[role="tab"][aria-selected="true"], 
-.stTabs [data-baseweb="tab"][aria-selected="true"] {
+/* 3. Active Tab */
+[data-testid="stTabs"] button[role="tab"][aria-selected="true"],
+[data-testid="stTabs"] button[data-baseweb="tab"][aria-selected="true"] {
     color: var(--accent) !important;
     border-bottom: 3px solid var(--accent) !important;
+}
+
+/* 4. Hide auto-scroll arrows */
+[data-testid="stTabs"] > div:first-child button:not([role="tab"]):not([data-baseweb="tab"]) {
+    display: none !important;
 }
 
 /* Divider */
