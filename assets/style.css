@@ -87,6 +87,10 @@ p, .stCaption, [data-testid="stCaptionContainer"] {
     display: flex !important;
 }
 
+.stTabs [data-baseweb="tab-highlight"] {
+    display: none !important;
+}
+
 .stTabs [data-baseweb="tab"] {
     flex: 1 1 0% !important;
     width: 100% !important;
