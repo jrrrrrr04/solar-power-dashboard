@@ -73,28 +73,24 @@ p, .stCaption, [data-testid="stCaptionContainer"] {
 /* Tabs */
 .stTabs [data-baseweb="tab-list"] {
     gap: 0px;
-    border-bottom: 1px solid var(--border);
-    width: 100%;
+    border-bottom: 1px solid var(--border) !important;
+    width: 100% !important; /* Forces the container to the end of the line */
+    display: flex !important; /* Ensures natural flexbox behavior */
 }
 
 .stTabs [data-baseweb="tab"] {
-    flex: 1;
+    flex: 1 !important; /* Forces Streamlit to respect your equal-width command */
     justify-content: center;
     height: 48px;
     color: var(--muted);
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.90rem; /* Slightly smaller to give text room to breathe */
+    white-space: normal !important; /* Lets text wrap naturally if it needs to */
 }
 
 .stTabs [aria-selected="true"] {
     color: var(--accent) !important;
     border-bottom: 3px solid var(--accent) !important;
-}
-
-[data-testid="stSlider"] { padding-top: 0.2rem; }
-
-[data-testid="stTabs"] > div:first-child button:not([role="tab"]) {
-    display: none !important;
 }
 
 /* Divider */
