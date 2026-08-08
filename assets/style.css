@@ -74,12 +74,13 @@ p, .stCaption, [data-testid="stCaptionContainer"] {
 .stTabs [data-baseweb="tab-list"] {
     gap: 0px;
     border-bottom: 1px solid var(--border);
-    width: 100%;
+    width: 100% !important;
+    display: flex !important;
 }
 
 .stTabs [data-baseweb="tab"] {
-    flex: 1;
-    justify-content: center;
+    flex: 1 !important;
+    justify-content: center !important;
     height: 48px;
     color: var(--muted);
     font-weight: 600;
@@ -89,12 +90,6 @@ p, .stCaption, [data-testid="stCaptionContainer"] {
 .stTabs [aria-selected="true"] {
     color: var(--accent) !important;
     border-bottom: 3px solid var(--accent) !important;
-}
-
-[data-testid="stSlider"] { padding-top: 0.2rem; }
-
-[data-testid="stTabs"] > div:first-child button:not([role="tab"]) {
-    display: none !important;
 }
 
 /* Divider */
