@@ -70,56 +70,31 @@ p, .stCaption, [data-testid="stCaptionContainer"] {
     transform: translateY(-2px);
 }
 
-/* TABS */
-
-[data-testid="stTabs"] {
-    width: 100% !important;
-}
-
-[data-testid="stTabs"] > div:first-child {
-    width: 100% !important;
-    max-width: none !important;
-}
-
-/* Tab container */
+/* Tabs */
 .stTabs [data-baseweb="tab-list"] {
-    display: flex !important;
-    width: 100% !important;
-    max-width: none !important;
-    gap: 0 !important;
-    border-bottom: 1px solid var(--border) !important;
+    gap: 0px;
+    border-bottom: 1px solid var(--border);
+    width: 100%;
 }
 
-/* Remove Streamlit's default highlight */
-.stTabs [data-baseweb="tab-highlight"] {
-    display: none !important;
-}
-
-/* Make EVERY tab exactly the same width */
 .stTabs [data-baseweb="tab"] {
-    flex: 1 1 0 !important;
-    min-width: 0 !important;
-    width: auto !important;
-    max-width: none !important;
-
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-
-    height: 48px !important;
-
-    color: var(--muted) !important;
-    font-weight: 600 !important;
-    font-size: 0.90rem !important;
-
-    white-space: nowrap !important;
-    padding: 0 !important;
+    flex: 1;
+    justify-content: center;
+    height: 48px;
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 0.95rem;
 }
 
-/* Active tab */
-.stTabs [data-baseweb="tab"][aria-selected="true"] {
+.stTabs [aria-selected="true"] {
     color: var(--accent) !important;
     border-bottom: 3px solid var(--accent) !important;
+}
+
+[data-testid="stSlider"] { padding-top: 0.2rem; }
+
+[data-testid="stTabs"] > div:first-child button:not([role="tab"]) {
+    display: none !important;
 }
 
 /* Divider */
@@ -139,10 +114,6 @@ hr {
     font-family: palatino, serif !important;
 }
 
-[data-testid="stAppViewContainer"] *:not([data-testid="stIconMaterial"]),
-[data-testid="stSidebar"] *:not([data-testid="stIconMaterial"]) {
-    font-family: palatino, serif !important;
-}
 
 /* ── RESPONSIVE STREAMLIT ADJUSTMENTS ────────────────── */
 @media (max-width: 768px) {
