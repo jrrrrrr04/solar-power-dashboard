@@ -70,15 +70,24 @@ p, .stCaption, [data-testid="stCaptionContainer"] {
     transform: translateY(-2px);
 }
 
-/* Tabs (Bulletproof for all versions) */
-div[data-testid="stTabs"] > div:first-child {
+/* Tabs - Global Override */
+.stTabs,
+.stTabs > div {
     width: 100% !important;
-    display: flex !important;
 }
 
-div[data-testid="stTabs"] > div:first-child > button,
-div[data-testid="stTabs"] [data-baseweb="tab"] {
-    flex: 1 !important;
+.stTabs [role="tablist"], 
+.stTabs [data-baseweb="tab-list"] {
+    display: flex !important;
+    width: 100% !important;
+    gap: 0px !important;
+    border-bottom: 1px solid var(--border) !important;
+}
+
+.stTabs button[role="tab"], 
+.stTabs [data-baseweb="tab"] {
+    flex-grow: 1 !important;
+    flex-basis: 0 !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
@@ -86,10 +95,11 @@ div[data-testid="stTabs"] [data-baseweb="tab"] {
     color: var(--muted) !important;
     font-weight: 600 !important;
     font-size: 0.95rem !important;
+    background: transparent !important;
 }
 
-div[data-testid="stTabs"] > div:first-child > button[aria-selected="true"],
-div[data-testid="stTabs"] [aria-selected="true"] {
+.stTabs button[role="tab"][aria-selected="true"], 
+.stTabs [data-baseweb="tab"][aria-selected="true"] {
     color: var(--accent) !important;
     border-bottom: 3px solid var(--accent) !important;
 }
