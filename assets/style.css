@@ -70,39 +70,54 @@ p, .stCaption, [data-testid="stCaptionContainer"] {
     transform: translateY(-2px);
 }
 
-/* Tabs - Force Full Container Width */
+/* TABS */
+
 [data-testid="stTabs"] {
     width: 100% !important;
 }
 
 [data-testid="stTabs"] > div:first-child {
     width: 100% !important;
-    max-width: 100% !important;
+    max-width: none !important;
 }
 
+/* Tab container */
 .stTabs [data-baseweb="tab-list"] {
-    gap: 0px !important;
-    border-bottom: 1px solid var(--border) !important;
-    width: 100% !important;
     display: flex !important;
+    width: 100% !important;
+    max-width: none !important;
+    gap: 0 !important;
+    border-bottom: 1px solid var(--border) !important;
 }
 
+/* Remove Streamlit's default highlight */
 .stTabs [data-baseweb="tab-highlight"] {
     display: none !important;
 }
 
+/* Make EVERY tab exactly the same width */
 .stTabs [data-baseweb="tab"] {
-    flex: 1 1 0% !important;
-    width: 100% !important;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    width: auto !important;
+    max-width: none !important;
+
+    display: flex !important;
+    align-items: center !important;
     justify-content: center !important;
+
     height: 48px !important;
+
     color: var(--muted) !important;
     font-weight: 600 !important;
     font-size: 0.90rem !important;
-    white-space: normal !important;
+
+    white-space: nowrap !important;
+    padding: 0 !important;
 }
 
-.stTabs [aria-selected="true"] {
+/* Active tab */
+.stTabs [data-baseweb="tab"][aria-selected="true"] {
     color: var(--accent) !important;
     border-bottom: 3px solid var(--accent) !important;
 }
