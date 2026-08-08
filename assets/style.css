@@ -70,7 +70,7 @@ p, .stCaption, [data-testid="stCaptionContainer"] {
     transform: translateY(-2px);
 }
 
-/* Tabs - Clean Spacing & Alignment Override */
+/* Tabs - Clean Spacing, Alignment, & Text Wrapping */
 [data-testid="stTabs"] [role="tablist"],
 [data-testid="stTabs"] [data-baseweb="tab-list"] {
     display: flex !important;
@@ -87,7 +87,7 @@ p, .stCaption, [data-testid="stCaptionContainer"] {
     display: flex !important;
 }
 
-/* 2. Format tab text with proper sizing so long titles fit cleanly */
+/* 2. Format tab button containers */
 [data-testid="stTabs"] button[role="tab"],
 [data-testid="stTabs"] button[data-baseweb="tab"] {
     width: 100% !important;
@@ -97,22 +97,35 @@ p, .stCaption, [data-testid="stCaptionContainer"] {
     justify-content: center !important;
     align-items: center !important;
     height: 48px !important;
-    color: var(--muted) !important;
-    font-weight: 600 !important;
-    font-size: 0.85rem !important; /* Adjusted font size so long titles fit */
-    padding: 0 4px !important;
-    text-align: center !important;
     background: transparent !important;
+    padding: 0 4px !important;
 }
 
-/* 3. Highlighted active tab */
+/* 3. Force the TEXT inside the tabs to wrap instead of overflow */
+[data-testid="stTabs"] button[role="tab"] p,
+[data-testid="stTabs"] button[data-baseweb="tab"] p {
+    white-space: normal !important; /* This allows text to wrap! */
+    word-wrap: break-word !important;
+    text-align: center !important;
+    line-height: 1.2 !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    color: var(--muted) !important;
+    margin: 0 !important;
+}
+
+/* 4. Highlighted active tab */
 [data-testid="stTabs"] button[role="tab"][aria-selected="true"],
 [data-testid="stTabs"] button[data-baseweb="tab"][aria-selected="true"] {
-    color: var(--accent) !important;
     border-bottom: 3px solid var(--accent) !important;
 }
 
-/* 4. Hide scroll navigation arrows */
+[data-testid="stTabs"] button[role="tab"][aria-selected="true"] p,
+[data-testid="stTabs"] button[data-baseweb="tab"][aria-selected="true"] p {
+    color: var(--accent) !important;
+}
+
+/* 5. Hide scroll navigation arrows */
 [data-testid="stTabs"] > div:first-child button:not([role="tab"]):not([data-baseweb="tab"]) {
     display: none !important;
 }
