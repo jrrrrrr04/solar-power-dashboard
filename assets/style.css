@@ -70,27 +70,26 @@ p, .stCaption, [data-testid="stCaptionContainer"] {
     transform: translateY(-2px);
 }
 
-/* Tabs (Bulletproof for all Streamlit versions) */
-[data-testid="stTabs"] [data-baseweb="tab-list"],
-[data-testid="stTabs"] > div:first-child {
-    gap: 0px !important;
-    border-bottom: 1px solid var(--border) !important;
+/* Tabs (Bulletproof for all versions) */
+div[data-testid="stTabs"] > div:first-child {
     width: 100% !important;
     display: flex !important;
 }
 
-[data-testid="stTabs"] button[role="tab"], 
-.stTabs [data-baseweb="tab"] {
-    flex: 1 1 0% !important;
+div[data-testid="stTabs"] > div:first-child > button,
+div[data-testid="stTabs"] [data-baseweb="tab"] {
+    flex: 1 !important;
+    display: flex !important;
     justify-content: center !important;
+    align-items: center !important;
     height: 48px !important;
     color: var(--muted) !important;
     font-weight: 600 !important;
     font-size: 0.95rem !important;
 }
 
-[data-testid="stTabs"] button[role="tab"][aria-selected="true"], 
-.stTabs [aria-selected="true"] {
+div[data-testid="stTabs"] > div:first-child > button[aria-selected="true"],
+div[data-testid="stTabs"] [aria-selected="true"] {
     color: var(--accent) !important;
     border-bottom: 3px solid var(--accent) !important;
 }
