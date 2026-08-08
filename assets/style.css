@@ -71,21 +71,22 @@ p, .stCaption, [data-testid="stCaptionContainer"] {
 }
 
 /* Tabs */
+/* 1. Force every outer Streamlit container to physically reach the right edge */
+.stTabs, 
+.stTabs > div, 
+.stTabs [data-baseweb="tab-list"] {
+    width: 100% !important;
+}
+
 .stTabs [data-baseweb="tab-list"] {
     gap: 0px;
     border-bottom: 1px solid var(--border) !important;
-    width: 100% !important;
     display: flex !important;
 }
 
-/* 1. Only stretch the wrappers that actually hold a tab button! */
-.stTabs [data-baseweb="tab-list"] > div:has(button) {
-    flex: 1 !important;
-    display: flex !important;
-}
-
-/* 2. Tell the button to fill its properly stretched wrapper */
+/* 2. Now the tabs can finally stretch into that full width */
 .stTabs [data-baseweb="tab"] {
+    flex: 1 1 0% !important; /* The 0% forces them to completely ignore text length and be exactly equal */
     width: 100% !important;
     justify-content: center;
     height: 48px;
