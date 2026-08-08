@@ -146,3 +146,12 @@ hr {
         margin-bottom: 0.75rem !important;
     }
 }
+
+/* Make charts responsive and clean on mobile */
+@media (max-width: 768px) {
+    [data-testid="stPlotlyChart"], .js-plotly-plot {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: auto !important;
+    }
+}
