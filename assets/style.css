@@ -120,7 +120,15 @@ hr {
     font-family: palatino, serif !important;
 }
 
-[data-testid="stAppViewContainer"] *:not([data-testid="stIconMaterial"]),
-[data-testid="stSidebar"] *:not([data-testid="stIconMaterial"]) {
-    font-family: palatino, serif !important;
+/* Mobile adjustments for screens smaller than 768px */
+@media (max-width: 768px) {
+    .block-container {
+        padding-top: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    h1 {
+        font-size: 1.5rem !important; /* Make headers slightly smaller on phones */
+    }
 }
