@@ -119,3 +119,8 @@ hr {
 .subtitle {
     font-family: palatino, serif !important;
 }
+
+[data-testid="stAppViewContainer"] *:not([data-testid="stIconMaterial"]),
+[data-testid="stSidebar"] *:not([data-testid="stIconMaterial"]) {
+    font-family: palatino, serif !important;
+}
