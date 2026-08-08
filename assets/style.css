@@ -70,7 +70,7 @@ p, .stCaption, [data-testid="stCaptionContainer"] {
     transform: translateY(-2px);
 }
 
-/* Tabs */
+/* Tabs - Clean Spacing & Alignment Override */
 [data-testid="stTabs"] [role="tablist"],
 [data-testid="stTabs"] [data-baseweb="tab-list"] {
     display: flex !important;
@@ -79,36 +79,40 @@ p, .stCaption, [data-testid="stCaptionContainer"] {
     border-bottom: 1px solid var(--border) !important;
 }
 
-/* 1. Force Streamlit's invisible tooltip wrapper divs to stretch */
+/* 1. Force invisible wrappers to take up equal width */
 [data-testid="stTabs"] [role="tablist"] > *,
 [data-testid="stTabs"] [data-baseweb="tab-list"] > * {
     flex: 1 1 0% !important;
+    min-width: 0 !important;
     display: flex !important;
 }
 
-/* 2. Style the actual buttons inside those wrappers */
+/* 2. Format tab text with proper sizing so long titles fit cleanly */
 [data-testid="stTabs"] button[role="tab"],
 [data-testid="stTabs"] button[data-baseweb="tab"] {
     width: 100% !important;
     flex: 1 1 0% !important;
+    min-width: 0 !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     height: 48px !important;
     color: var(--muted) !important;
     font-weight: 600 !important;
-    font-size: 0.95rem !important;
+    font-size: 0.85rem !important; /* Adjusted font size so long titles fit */
+    padding: 0 4px !important;
+    text-align: center !important;
     background: transparent !important;
 }
 
-/* 3. Active Tab */
+/* 3. Highlighted active tab */
 [data-testid="stTabs"] button[role="tab"][aria-selected="true"],
 [data-testid="stTabs"] button[data-baseweb="tab"][aria-selected="true"] {
     color: var(--accent) !important;
     border-bottom: 3px solid var(--accent) !important;
 }
 
-/* 4. Hide auto-scroll arrows */
+/* 4. Hide scroll navigation arrows */
 [data-testid="stTabs"] > div:first-child button:not([role="tab"]):not([data-baseweb="tab"]) {
     display: none !important;
 }
