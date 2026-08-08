@@ -74,18 +74,26 @@ p, .stCaption, [data-testid="stCaptionContainer"] {
 .stTabs [data-baseweb="tab-list"] {
     gap: 0px;
     border-bottom: 1px solid var(--border) !important;
-    width: 100% !important; /* Forces the container to the end of the line */
-    display: flex !important; /* Ensures natural flexbox behavior */
+    width: 100% !important;
+    display: flex !important;
 }
 
+/* 1. Tell the invisible parent wrappers to stretch equally */
+.stTabs [data-baseweb="tab-list"] > div {
+    flex: 1 !important;
+    display: flex !important;
+}
+
+/* 2. Tell the button to fill its newly stretched wrapper */
 .stTabs [data-baseweb="tab"] {
-    flex: 1 !important; /* Forces Streamlit to respect your equal-width command */
+    width: 100% !important;
+    flex: 1 !important;
     justify-content: center;
     height: 48px;
     color: var(--muted);
     font-weight: 600;
-    font-size: 0.90rem; /* Slightly smaller to give text room to breathe */
-    white-space: normal !important; /* Lets text wrap naturally if it needs to */
+    font-size: 0.90rem;
+    white-space: normal !important;
 }
 
 .stTabs [aria-selected="true"] {
