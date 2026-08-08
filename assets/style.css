@@ -70,56 +70,50 @@ p, .stCaption, [data-testid="stCaptionContainer"] {
     transform: translateY(-2px);
 }
 
-/* Tabs - Final Centered & Wrapped Fix */
+/* Tabs - Strict CSS Grid Layout */
 [data-testid="stTabs"] [role="tablist"] {
-    display: flex !important;
+    display: grid !important;
+    /* This forces exactly 6 equal columns, perfectly spaced */
+    grid-template-columns: repeat(6, 1fr) !important; 
     width: 100% !important;
-    gap: 0px !important;
     border-bottom: 1px solid var(--border) !important;
+    gap: 0px !important;
 }
 
-/* Force wrappers to take equal width */
-[data-testid="stTabs"] [role="tablist"] > * {
-    flex: 1 !important;
-    display: flex !important;
-}
-
-/* Force buttons to center their contents */
+/* Force buttons to fill their specific grid cell */
 [data-testid="stTabs"] button[role="tab"] {
-    flex: 1 !important;
-    display: flex !important;
-    justify-content: center !important; 
-    align-items: center !important;
     width: 100% !important;
-    height: 48px !important;
-    padding: 0 2px !important;
-    background: transparent !important;
-}
-
-/* Force ALL nested text containers to center and wrap */
-[data-testid="stTabs"] button[role="tab"] > * {
+    height: 100% !important;
+    min-height: 48px !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    width: 100% !important;
+    background: transparent !important;
+    padding: 0 4px !important;
+    margin: 0 !important;
+}
+
+/* Trap the text and force it to wrap inside the cell */
+[data-testid="stTabs"] button[role="tab"] * {
+    white-space: normal !important;
+    word-break: break-word !important;
     text-align: center !important;
-    white-space: normal !important; /* Allows long text to stack */
     line-height: 1.2 !important;
     font-size: 0.85rem !important;
     font-weight: 600 !important;
     color: var(--muted) !important;
 }
 
-/* Active Tab Styles */
+/* Active tab styling */
 [data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
     border-bottom: 3px solid var(--accent) !important;
 }
 
-[data-testid="stTabs"] button[role="tab"][aria-selected="true"] > * {
+[data-testid="stTabs"] button[role="tab"][aria-selected="true"] * {
     color: var(--accent) !important;
 }
 
-/* Hide Streamlit scroll arrows */
+/* Hide Streamlit's scroll arrows */
 [data-testid="stTabs"] > div:first-child button:not([role="tab"]) {
     display: none !important;
 }
