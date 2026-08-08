@@ -78,16 +78,15 @@ p, .stCaption, [data-testid="stCaptionContainer"] {
     display: flex !important;
 }
 
-/* 1. Tell the invisible parent wrappers to stretch equally */
-.stTabs [data-baseweb="tab-list"] > div {
+/* 1. Only stretch the wrappers that actually hold a tab button! */
+.stTabs [data-baseweb="tab-list"] > div:has(button) {
     flex: 1 !important;
     display: flex !important;
 }
 
-/* 2. Tell the button to fill its newly stretched wrapper */
+/* 2. Tell the button to fill its properly stretched wrapper */
 .stTabs [data-baseweb="tab"] {
     width: 100% !important;
-    flex: 1 !important;
     justify-content: center;
     height: 48px;
     color: var(--muted);
