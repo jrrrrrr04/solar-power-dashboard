@@ -70,50 +70,54 @@ p, .stCaption, [data-testid="stCaptionContainer"] {
     transform: translateY(-2px);
 }
 
-/* Tabs - Strict CSS Grid Layout */
+/* Tabs - Exact Local Match Override */
 [data-testid="stTabs"] [role="tablist"] {
-    display: grid !important;
-    /* This forces exactly 6 equal columns, perfectly spaced */
-    grid-template-columns: repeat(6, 1fr) !important; 
     width: 100% !important;
+    display: flex !important;
     border-bottom: 1px solid var(--border) !important;
     gap: 0px !important;
 }
 
-/* Force buttons to fill their specific grid cell */
+/* 1. Stretch ONLY the wrappers that actually hold a button (ignores the ghost box) */
+[data-testid="stTabs"] [role="tablist"] > div:has(button) {
+    flex: 1 !important;
+}
+
+/* 2. Center the buttons inside those wrappers */
 [data-testid="stTabs"] button[role="tab"] {
     width: 100% !important;
-    height: 100% !important;
-    min-height: 48px !important;
+    flex: 1 !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+    height: 48px !important;
     background: transparent !important;
-    padding: 0 4px !important;
+    border: none !important;
+}
+
+/* 3. Force text to stay exactly on one line, matching your local site */
+[data-testid="stTabs"] button[role="tab"] p, 
+[data-testid="stTabs"] button[role="tab"] span {
+    font-family: palatino, serif !important;
+    font-size: 0.90rem !important; /* Sized perfectly to fit 'Environmental factors' */
+    font-weight: 600 !important;
+    color: var(--muted) !important;
+    white-space: nowrap !important; /* Prevents wrapping */
     margin: 0 !important;
 }
 
-/* Trap the text and force it to wrap inside the cell */
-[data-testid="stTabs"] button[role="tab"] * {
-    white-space: normal !important;
-    word-break: break-word !important;
-    text-align: center !important;
-    line-height: 1.2 !important;
-    font-size: 0.85rem !important;
-    font-weight: 600 !important;
-    color: var(--muted) !important;
-}
-
-/* Active tab styling */
+/* 4. Apply your custom blue active indicator */
 [data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
     border-bottom: 3px solid var(--accent) !important;
 }
 
-[data-testid="stTabs"] button[role="tab"][aria-selected="true"] * {
+[data-testid="stTabs"] button[role="tab"][aria-selected="true"] p,
+[data-testid="stTabs"] button[role="tab"][aria-selected="true"] span {
     color: var(--accent) !important;
 }
 
-/* Hide Streamlit's scroll arrows */
+/* 5. KILL the invisible ghost box and scroll arrows completely */
+[data-testid="stTabs"] [role="tablist"] > div:empty,
 [data-testid="stTabs"] > div:first-child button:not([role="tab"]) {
     display: none !important;
 }
