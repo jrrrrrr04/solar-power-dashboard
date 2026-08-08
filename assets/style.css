@@ -70,63 +70,57 @@ p, .stCaption, [data-testid="stCaptionContainer"] {
     transform: translateY(-2px);
 }
 
-/* Tabs - Clean Spacing, Alignment, & Text Wrapping */
-[data-testid="stTabs"] [role="tablist"],
-[data-testid="stTabs"] [data-baseweb="tab-list"] {
+/* Tabs - Final Centered & Wrapped Fix */
+[data-testid="stTabs"] [role="tablist"] {
     display: flex !important;
     width: 100% !important;
     gap: 0px !important;
     border-bottom: 1px solid var(--border) !important;
 }
 
-/* 1. Force invisible wrappers to take up equal width */
-[data-testid="stTabs"] [role="tablist"] > *,
-[data-testid="stTabs"] [data-baseweb="tab-list"] > * {
-    flex: 1 1 0% !important;
-    min-width: 0 !important;
+/* Force wrappers to take equal width */
+[data-testid="stTabs"] [role="tablist"] > * {
+    flex: 1 !important;
     display: flex !important;
 }
 
-/* 2. Format tab button containers */
-[data-testid="stTabs"] button[role="tab"],
-[data-testid="stTabs"] button[data-baseweb="tab"] {
+/* Force buttons to center their contents */
+[data-testid="stTabs"] button[role="tab"] {
+    flex: 1 !important;
+    display: flex !important;
+    justify-content: center !important; 
+    align-items: center !important;
     width: 100% !important;
-    flex: 1 1 0% !important;
-    min-width: 0 !important;
+    height: 48px !important;
+    padding: 0 2px !important;
+    background: transparent !important;
+}
+
+/* Force ALL nested text containers to center and wrap */
+[data-testid="stTabs"] button[role="tab"] > * {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    height: 48px !important;
-    background: transparent !important;
-    padding: 0 4px !important;
-}
-
-/* 3. Force the TEXT inside the tabs to wrap instead of overflow */
-[data-testid="stTabs"] button[role="tab"] p,
-[data-testid="stTabs"] button[data-baseweb="tab"] p {
-    white-space: normal !important; /* This allows text to wrap! */
-    word-wrap: break-word !important;
+    width: 100% !important;
     text-align: center !important;
+    white-space: normal !important; /* Allows long text to stack */
     line-height: 1.2 !important;
     font-size: 0.85rem !important;
     font-weight: 600 !important;
     color: var(--muted) !important;
-    margin: 0 !important;
 }
 
-/* 4. Highlighted active tab */
-[data-testid="stTabs"] button[role="tab"][aria-selected="true"],
-[data-testid="stTabs"] button[data-baseweb="tab"][aria-selected="true"] {
+/* Active Tab Styles */
+[data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
     border-bottom: 3px solid var(--accent) !important;
 }
 
-[data-testid="stTabs"] button[role="tab"][aria-selected="true"] p,
-[data-testid="stTabs"] button[data-baseweb="tab"][aria-selected="true"] p {
+[data-testid="stTabs"] button[role="tab"][aria-selected="true"] > * {
     color: var(--accent) !important;
 }
 
-/* 5. Hide scroll navigation arrows */
-[data-testid="stTabs"] > div:first-child button:not([role="tab"]):not([data-baseweb="tab"]) {
+/* Hide Streamlit scroll arrows */
+[data-testid="stTabs"] > div:first-child button:not([role="tab"]) {
     display: none !important;
 }
 
